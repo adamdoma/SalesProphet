@@ -1,8 +1,7 @@
 package com.company;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
+
 
 public class User {
     private String email,id,firstName,lastName;
@@ -14,9 +13,6 @@ public class User {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-//        this.year = year;
-//        this.month = month;
-//        this.day = day;
         this.birthDate.set(year,month,day);
     }
 
