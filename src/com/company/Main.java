@@ -8,6 +8,7 @@ public class Main {
         User u = new User("adamdoma@gmail.com","1234","adam","zozha",1983,5,25);
         System.out.println("print test");
         String s;
+        String two;
 
     }
 }
