@@ -11,6 +11,7 @@ public class Main {
 
         try {
             serverSocket = new ServerSocket(PORT);
+            System.out.println("Waiting for client");
         } catch (IOException e) {
             e.printStackTrace();
 

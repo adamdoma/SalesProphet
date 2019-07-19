@@ -11,11 +11,11 @@ public class EchoThread extends Thread {
     public void run() {
         InputStream inp = null;
         BufferedReader brinp = null;
-        DataOutputStream out = null;
+        PrintWriter out = null;
         try {
             inp = socket.getInputStream();
             brinp = new BufferedReader(new InputStreamReader(inp));
-            out = new DataOutputStream(socket.getOutputStream());
+            out = new PrintWriter(socket.getOutputStream(),true);
         } catch (IOException e) {
             return;
         }
@@ -23,12 +23,17 @@ public class EchoThread extends Thread {
         while (true) {
             try {
                 line = brinp.readLine();
-                if ((line == null) || line.equalsIgnoreCase("QUIT")) {
+                if ((line == null) || line.toLowerCase()=="quit") {
                     socket.close();
                     return;
                 } else {
-                    out.writeBytes(line + "\n\r");
-                    out.flush();
+                    if(HelperClass.userEmailTest(line)){
+                        out.println("Email ok");
+                    }else{
+                        out.println("Retype Email");
+                    }
+//                    out.println("HHHHHHHHH");
+//                    out.flush();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
