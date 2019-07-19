@@ -6,7 +6,7 @@ import java.util.Calendar;
 public class User {
     private String email,id,firstName,lastName;
     private Calendar birthDate= Calendar.getInstance();
-   // private int year,month,day;
+    // private int year,month,day;
 
     public User(String email, String id, String firstName, String lastName, int year, int month, int day) {
         this.email = email;
