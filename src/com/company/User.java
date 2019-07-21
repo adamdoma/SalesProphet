@@ -1,19 +1,18 @@
 package com.company;
 
-import java.util.Calendar;
-
+import java.time.LocalDate;
 
 public class User {
     private String email,id,firstName,lastName;
-    private Calendar birthDate= Calendar.getInstance();
-    // private int year,month,day;
+    private LocalDate birthDate;
+
 
     public User(String email, String id, String firstName, String lastName, int year, int month, int day) {
         this.email = email;
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.birthDate.set(year,month,day);
+        this.birthDate= LocalDate.of(year,month,day);
     }
 
     public String getEmail() {
@@ -48,11 +47,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public Calendar getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Calendar birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 }
