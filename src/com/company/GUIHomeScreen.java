@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.Socket;
 
-public class GUILogin extends JFrame {
+public class GUIHomeScreen extends JFrame {
     private JButton btnLogIn, btnBack;
     private JLabel lblUserName, lblPassword;
     private JTextField tfUsername;
@@ -15,17 +15,17 @@ public class GUILogin extends JFrame {
     private JPanel panel = new JPanel();
     private GridBagLayout layout = new GridBagLayout();
     private GridBagConstraints gbc = new GridBagConstraints();
-    private Socket socket=null;
 
-    public GUILogin(){
-        btnLogIn = new JButton("LOGIN");
+    public GUIHomeScreen(){
+        setTitle("Home Screen");
+        btnLogIn = new JButton("Hello");
         btnBack = new JButton("BACK");
         lblUserName = new JLabel("USER NAME");
         lblPassword = new JLabel("PASSWORD");
         tfUsername = new JTextField(20);
         pfPassword = new JPasswordField(20);
 
-        setSize(500,500);
+
         setLayout(layout);
         panel.setLayout(layout);
         gbc.insets= new Insets(5,5,5,5);
@@ -58,25 +58,11 @@ public class GUILogin extends JFrame {
 
         add(panel);
 
-        btnLogIn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String userName = tfUsername.getText();
-                String passWord = pfPassword.getText();
-                HealperClass.Connect();
-                String line;
-                try{
-                    HealperClass.dos.println(userName);
-                    line = HealperClass.dis.readLine();
-                    //System.out.println(line);
-                }catch (Exception ee){
-                    System.out.println("not Good!!!!!!!!!!");
-                }
-            }
-        });
 
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
     }
+
+
 }
