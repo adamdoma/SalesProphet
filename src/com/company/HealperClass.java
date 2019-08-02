@@ -12,6 +12,10 @@ public class HealperClass {
     static PrintWriter dos =null;
     static  DataInputStream dis=null;
 
+    /**
+     * Connects the user to the server
+     * @return socket
+     */
     public static Socket Connect(){
         if (socket==null){
             try {

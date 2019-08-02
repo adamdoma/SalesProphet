@@ -25,8 +25,9 @@ public class EchoThread extends Thread {
             try {
                 line = dis.readLine();
                 System.out.println("From ip: "+socket.getLocalAddress()+" "+line);
-                if(HelperClass.userEmailTest(line)){
+                if(HelperClass.userEmailTest(line) && !connected){
                     dos.println("true");
+                    connected = true;
                 }
                 else
                     dos.println("false");
@@ -36,4 +37,9 @@ public class EchoThread extends Thread {
             }
         }
     }
+
+    private  class df{
+
+    }
 }
+

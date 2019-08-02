@@ -16,9 +16,12 @@ public class GUIHomeScreen extends JFrame {
     private GridBagLayout layout = new GridBagLayout();
     private GridBagConstraints gbc = new GridBagConstraints();
 
+    /**
+     * Constructor
+     */
     public GUIHomeScreen(){
         setTitle("Home Screen");
-        btnLogIn = new JButton("Hello");
+        btnLogIn = new JButton("");
         btnBack = new JButton("BACK");
         lblUserName = new JLabel("USER NAME");
         lblPassword = new JLabel("PASSWORD");
