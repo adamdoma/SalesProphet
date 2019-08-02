@@ -3,9 +3,11 @@ import java.net.Socket;
 
 public class EchoThread extends Thread {
     protected Socket socket;
+    private boolean connected;
 
     public EchoThread(Socket clientSocket) {
         this.socket = clientSocket;
+        this.connected = false;
     }
 
     public void run() {
@@ -22,8 +24,12 @@ public class EchoThread extends Thread {
         while (true) {
             try {
                 line = dis.readLine();
-                System.out.println(line);
-                dos.println("hi there");
+                System.out.println("From ip: "+socket.getLocalAddress()+" "+line);
+                if(HelperClass.userEmailTest(line)){
+                    dos.println("true");
+                }
+                else
+                    dos.println("false");
             } catch (IOException e) {
                 e.printStackTrace();
                 return;

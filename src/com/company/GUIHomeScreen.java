@@ -25,7 +25,7 @@ public class GUIHomeScreen extends JFrame {
         tfUsername = new JTextField(20);
         pfPassword = new JPasswordField(20);
 
-
+        setSize(500,500);
         setLayout(layout);
         panel.setLayout(layout);
         gbc.insets= new Insets(5,5,5,5);

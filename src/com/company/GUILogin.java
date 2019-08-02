@@ -68,7 +68,13 @@ public class GUILogin extends JFrame {
                 try{
                     HealperClass.dos.println(userName);
                     line = HealperClass.dis.readLine();
-                    //System.out.println(line);
+                    System.out.println(line);
+                    if(line.equals("true")) {
+                        dispose();
+                        new GUIHomeScreen();
+                    }
+                    else
+                        JOptionPane.showMessageDialog(null,"Invalid Email");
                 }catch (Exception ee){
                     System.out.println("not Good!!!!!!!!!!");
                 }
