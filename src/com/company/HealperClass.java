@@ -6,9 +6,6 @@ import java.net.Socket;
 
 public class HealperClass {
     static Socket socket=null;
-    static String line=null;
-//    static ObjectInputStream ois=null;
-//    static ObjectOutputStream oop =null;
     static PrintWriter dos =null;
     static  DataInputStream dis=null;
 
@@ -27,5 +24,14 @@ public class HealperClass {
             }
         }
         return socket;
+    }
+
+    public static void closeSocket(){
+        try {
+            if(socket != null)
+                socket.close();
+        } catch (IOException e) {
+            System.out.println("Unable to close or already closed socket "+e.getMessage());
+        }
     }
 }

@@ -15,7 +15,6 @@ public class GUILogin extends JFrame {
     private JPanel panel = new JPanel();
     private GridBagLayout layout = new GridBagLayout();
     private GridBagConstraints gbc = new GridBagConstraints();
-    private Socket socket=null;
 
     public GUILogin(){
         btnLogIn = new JButton("LOGIN");
@@ -76,13 +75,14 @@ public class GUILogin extends JFrame {
                     else
                         JOptionPane.showMessageDialog(null,"Invalid Email");
                 }catch (Exception ee){
-                    System.out.println("not Good!!!!!!!!!!");
+                    System.out.println("not Good!!!!!!!!!! "+ee.getMessage());
                 }
             }
         });
 
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+
 
     }
 }

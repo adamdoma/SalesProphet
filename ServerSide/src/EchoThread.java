@@ -32,7 +32,12 @@ public class EchoThread extends Thread {
                 else
                     dos.println("false");
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println(socket.getInetAddress()+" Client Disconnected");
+                try {
+                    socket.close();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
                 return;
             }
         }
