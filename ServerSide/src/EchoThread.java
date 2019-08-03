@@ -36,7 +36,8 @@ public class EchoThread extends Thread {
                 try {
                     socket.close();
                 } catch (IOException ex) {
-                    ex.printStackTrace();
+                    System.out.println("system Disconnected");
+
                 }
                 return;
             }
