@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.Socket;
 
-public class GUILogin extends JFrame {
+public class GUIHomeScreen extends JFrame {
     private JButton btnLogIn, btnBack;
     private JLabel lblUserName, lblPassword;
     private JTextField tfUsername;
@@ -16,8 +16,12 @@ public class GUILogin extends JFrame {
     private GridBagLayout layout = new GridBagLayout();
     private GridBagConstraints gbc = new GridBagConstraints();
 
-    public GUILogin(){
-        btnLogIn = new JButton("LOGIN");
+    /**
+     * Constructor
+     */
+    public GUIHomeScreen(){
+        setTitle("Home Screen");
+        btnLogIn = new JButton("");
         btnBack = new JButton("BACK");
         lblUserName = new JLabel("USER NAME");
         lblPassword = new JLabel("PASSWORD");
@@ -57,32 +61,11 @@ public class GUILogin extends JFrame {
 
         add(panel);
 
-        btnLogIn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String userName = tfUsername.getText();
-                String passWord = pfPassword.getText();
-                HealperClass.Connect();
-                String line;
-                try{
-                    HealperClass.dos.println(userName);
-                    line = HealperClass.dis.readLine();
-                    System.out.println(line);
-                    if(line.equals("true")) {
-                        dispose();
-                        new GUIHomeScreen();
-                    }
-                    else
-                        JOptionPane.showMessageDialog(null,"Invalid Email");
-                }catch (Exception ee){
-                    System.out.println("not Good!!!!!!!!!! "+ee.getMessage());
-                }
-            }
-        });
 
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-
     }
+
+
 }

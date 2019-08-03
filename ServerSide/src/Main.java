@@ -19,8 +19,9 @@ public class Main {
         while (true) {
             try {
                 socket = serverSocket.accept();
+                System.out.println(socket.getInetAddress()+" Connected");
             } catch (IOException e) {
-                System.out.println("I/O error: " + e);
+                System.out.println("I/O error: " + e.getMessage());
             }
             // new thread for a client
             new EchoThread(socket).start();
