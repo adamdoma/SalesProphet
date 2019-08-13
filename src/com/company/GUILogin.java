@@ -1,11 +1,12 @@
 package com.company;
 
+import com.google.gson.Gson;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.net.Socket;
+
 
 public class GUILogin extends JFrame {
     private JButton btnLogIn, btnBack;
@@ -63,17 +64,25 @@ public class GUILogin extends JFrame {
                 String userName = tfUsername.getText();
                 String passWord = pfPassword.getText();
                 HealperClass.Connect();
+                HealperClass.Login login;
                 String line;
                 try{
-                    HealperClass.dos.println(userName);
+                    login = new HealperClass.Login(userName,passWord);
+                    Gson gson = new Gson();
+                    String loginGson = gson.toJson(login);
+                    HealperClass.dos.println(loginGson);
                     line = HealperClass.dis.readLine();
-                    System.out.println(line);
+                    //System.out.println(line);
                     if(line.equals("true")) {
                         dispose();
                         new GUIHomeScreen();
                     }
-                    else
-                        JOptionPane.showMessageDialog(null,"Invalid Email");
+                    else {
+                        if(line.equals("false"))
+                            JOptionPane.showMessageDialog(null, "Invalid Email");
+                        else if(line.equals("password"))
+                            JOptionPane.showMessageDialog(null, "Invalid Email/Password");
+                    }
                 }catch (Exception ee){
                     System.out.println("not Good!!!!!!!!!! "+ee.getMessage());
                 }
