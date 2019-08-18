@@ -33,30 +33,7 @@ public class GUIHomeScreen extends JFrame {
         panel.setLayout(layout);
         gbc.insets= new Insets(5,5,5,5);
 
-        gbc.gridx=0;
-        gbc.gridy=0;
-        panel.add(lblUserName,gbc);
 
-        gbc.gridx=1;
-        gbc.gridy =0;
-        panel.add(tfUsername,gbc);
-
-        gbc.gridx=0;
-        gbc.gridy =1;
-        panel.add(lblPassword,gbc);
-
-        gbc.gridx=1;
-        gbc.gridy =1;
-        panel.add(pfPassword,gbc);
-
-        gbc.gridx=0;
-        gbc.gridy=2;
-        panel.add(btnLogIn,gbc);
-
-        gbc.anchor = GridBagConstraints.SOUTH;
-        gbc.gridx=1;
-        gbc.gridy=2;
-        panel.add(btnBack,gbc);
 
 
         add(panel);

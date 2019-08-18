@@ -1,8 +1,12 @@
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
-    public class User {
-        private String email,id,firstName,lastName;
+public class User {
+        private String email,id,firstName,lastName,password,type;
         private LocalDate birthDate;
+
 
         /**
          * Constructor for User class.
@@ -14,12 +18,37 @@ import java.time.LocalDate;
          * @param month
          * @param day
          */
-        public User(String email, String id, String firstName, String lastName, int year, int month, int day) {
+        public User(String email, String id, String firstName, String lastName, int year, int month, int day, String password) {
             this.email = email;
             this.id = id;
             this.firstName = firstName;
             this.lastName = lastName;
-            this.birthDate= LocalDate.of(year,month,day);
+            this.birthDate = LocalDate.of(year,month,day);
+            this.password = password;
+        }
+
+        public User(String email, String password, String type){
+            this.password = password;
+            this.email = email;
+            this.type = type;
+
+        }
+
+        public User (User user){
+            this.email = user.email;
+            this.password = user.password;
+            this.id = user.id;
+            this.firstName = user.firstName;
+            this.lastName = user.lastName;
+            this.birthDate = user.birthDate;
+            this.type = user.type;
+        }
+
+        public User(String id, String firstName, String lastName, LocalDate birthDate) {
+            this.id = id;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.birthDate = birthDate;
         }
 
         /**
@@ -94,12 +123,30 @@ import java.time.LocalDate;
             return birthDate;
         }
 
-        /**
-         * Takes LocalDate parameter for users birthDate.
-         * @param birthDate
-         */
-        public void setBirthDate(LocalDate birthDate) {
-            this.birthDate = birthDate;
+    /**
+     *
+     * @param year
+     * @param month
+     * @param day
+     */
+        public void setBirthDate(int year, int month, int day) {
+            this.birthDate = LocalDate.of(year, month, day);
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
         }
     }
 

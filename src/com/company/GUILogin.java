@@ -9,9 +9,9 @@ import java.awt.event.ActionListener;
 
 
 public class GUILogin extends JFrame {
-    private JButton btnLogIn, btnBack;
+    private JButton btnLogIn, btnQuit,btnRegister;
     private JLabel lblUserName, lblPassword;
-    private JTextField tfUsername;
+    private JTextField tfEmail;
     private JPasswordField pfPassword;
     private JPanel panel = new JPanel();
     private GridBagLayout layout = new GridBagLayout();
@@ -19,10 +19,12 @@ public class GUILogin extends JFrame {
 
     public GUILogin(){
         btnLogIn = new JButton("LOGIN");
-        btnBack = new JButton("BACK");
+        btnQuit = new JButton("QUIT");
         lblUserName = new JLabel("USER NAME");
         lblPassword = new JLabel("PASSWORD");
-        tfUsername = new JTextField(20);
+        btnRegister = new JButton("Register");
+        tfEmail = new JTextField(20);
+        tfEmail.setText("Username");
         pfPassword = new JPasswordField(20);
 
         setSize(500,500);
@@ -36,7 +38,7 @@ public class GUILogin extends JFrame {
 
         gbc.gridx=1;
         gbc.gridy =0;
-        panel.add(tfUsername,gbc);
+        panel.add(tfEmail,gbc);
 
         gbc.gridx=0;
         gbc.gridy =1;
@@ -53,7 +55,15 @@ public class GUILogin extends JFrame {
         gbc.anchor = GridBagConstraints.SOUTH;
         gbc.gridx=1;
         gbc.gridy=2;
-        panel.add(btnBack,gbc);
+        panel.add(btnQuit,gbc);
+
+        //gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.insets = new Insets(70,5,5,5);
+        gbc.ipadx =20;
+        gbc.gridwidth =2;
+        gbc.gridx=0;
+        gbc.gridy=3;
+        panel.add(btnRegister,gbc);
 
 
         add(panel);
@@ -61,19 +71,20 @@ public class GUILogin extends JFrame {
         btnLogIn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String userName = tfUsername.getText();
+                String email = tfEmail.getText();
                 String passWord = pfPassword.getText();
                 HealperClass.Connect();
-                HealperClass.Login login;
+                User login;
                 String line;
                 try{
-                    login = new HealperClass.Login(userName,passWord);
+                    login = new User(email,passWord,"login");
                     Gson gson = new Gson();
                     String loginGson = gson.toJson(login);
                     HealperClass.dos.println(loginGson);
                     line = HealperClass.dis.readLine();
                     //System.out.println(line);
                     if(line.equals("true")) {
+                        JOptionPane.showMessageDialog(null, "Connected");
                         dispose();
                         new GUIHomeScreen();
                     }
@@ -86,6 +97,21 @@ public class GUILogin extends JFrame {
                 }catch (Exception ee){
                     System.out.println("not Good!!!!!!!!!! "+ee.getMessage());
                 }
+            }
+        });
+
+        btnQuit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+
+        btnRegister.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new GUIRegisterForm();
             }
         });
 

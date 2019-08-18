@@ -3,8 +3,10 @@ package com.company;
 import java.time.LocalDate;
 
 public class User {
-    private String email,id,firstName,lastName;
+
+    private String email,id,firstName,lastName,password,type;
     private LocalDate birthDate;
+
 
     /**
      * Constructor for User class.
@@ -22,6 +24,13 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate= LocalDate.of(year,month,day);
+
+    }
+
+    public User(String email, String password,String type) {
+        this.email = email;
+        this.password = password;
+        this.type = type;
     }
 
     /**
@@ -97,10 +106,28 @@ public class User {
     }
 
     /**
-     * Takes LocalDate parameter for users birthDate.
-     * @param birthDate
+     *
+     * @param year
+     * @param month
+     * @param day
      */
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
+    public void setBirthDate(int year, int month, int day) {
+        this.birthDate = LocalDate.of(year, month, day);
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
