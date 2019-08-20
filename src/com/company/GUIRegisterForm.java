@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.time.DateTimeException;
 
 public class GUIRegisterForm extends JFrame implements MouseListener,ActionListener {
     private JButton btnRegister,btnBack;
@@ -28,22 +29,30 @@ public class GUIRegisterForm extends JFrame implements MouseListener,ActionListe
 
         tfEmail = new JTextField("Email",20);
         tfEmail.setFont(new Font("David",Font.BOLD,18));
-        tfEmail.setText("");
+        tfEmail.setHorizontalAlignment(JTextField.CENTER);
 
         tfId = new JTextField("Id",20);
         tfId.setFont(new Font("David",Font.BOLD,18));
+        tfId.setHorizontalAlignment(JTextField.CENTER);
 
         tfFirstName = new JTextField("First Name",20);
         tfFirstName.setFont(new Font("David",Font.BOLD,18));
+        tfFirstName.setHorizontalAlignment(JTextField.CENTER);
 
         tfLastName = new JTextField("Last Name",20);
         tfLastName.setFont(new Font("David",Font.BOLD,18));
+        tfLastName.setHorizontalAlignment(JTextField.CENTER);
 
         tfYear = new JTextField("Year",4);
+        tfYear.setHorizontalAlignment(JTextField.CENTER);
 
 
         tfMonth = new JTextField("Month",2);
+        tfMonth.setHorizontalAlignment(JTextField.CENTER);
+
         tfDay = new JTextField("Day",2);
+        tfDay.setHorizontalAlignment(JTextField.CENTER);
+
         gbc.insets = new Insets(5,5,5,5);
 
         //------------Header panel-------------------------
@@ -135,7 +144,7 @@ public class GUIRegisterForm extends JFrame implements MouseListener,ActionListe
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        JTextField [] tf = {tfId,tfEmail,tfFirstName,tfLastName};
+        JTextField [] tf = {tfId,tfEmail,tfFirstName,tfLastName,tfYear,tfMonth,tfDay};
         for(int i=0;i<tf.length;i++){
             if(e.getSource()==tf[i]){
                 tf[i].setText("");
@@ -177,12 +186,20 @@ public class GUIRegisterForm extends JFrame implements MouseListener,ActionListe
                     return;
                 }
             }
-            User user = new User(tfEmail.getText(),tfId.getText(),tfFirstName.getText()
-                                ,tfLastName.getText(),Integer.parseInt(tfYear.getText())
-                                ,Integer.parseInt(tfMonth.getText())
-                                ,Integer.parseInt(tfDay.getText()));
-            Gson gson = new Gson();
-            String strUser = gson.toJson(user);
+
+            //test date
+
+            try {
+                User user = new User(tfEmail.getText(), tfId.getText(), tfFirstName.getText()
+                        , tfLastName.getText(), Integer.parseInt(tfYear.getText())
+                        , Integer.parseInt(tfMonth.getText())
+                        , Integer.parseInt(tfDay.getText()));
+                Gson gson = new Gson();
+                String strUser = gson.toJson(user);
+                System.out.println(strUser);
+            }catch (Exception date){
+                JOptionPane.showMessageDialog(null,date.getMessage());
+            }
         }
     }
 }
