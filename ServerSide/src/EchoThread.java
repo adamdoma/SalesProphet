@@ -65,7 +65,7 @@ public class EchoThread extends Thread {
                         " "
                         +user.getFirstName()+
                         " "+
-                        user.getBirthDate()+
+                        user.getLastName()+
                         " is connected to database");
                 userConnectd =true;
                 return "true";

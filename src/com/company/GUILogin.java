@@ -104,6 +104,7 @@ public class GUILogin extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
+                HealperClass.closeSocket();
             }
         });
 
